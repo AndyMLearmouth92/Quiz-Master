@@ -1,13 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import "./App.css";
 import StartScreen from "./StartScreen";
 
+const initialState = {
+  questions: [],
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "dataReceived":
+      return {
+        ...state,
+        questions: action.payload,
+        status: "ready",
+      };
+    case "dataFailed":
+      return {
+        ...state,
+        status: "error",
+      };
+    default:
+      throw new Error("Action unknown");
+  }
+}
+
 function App() {
+  const [{ questions }, dispatch] = useReducer(reducer, initialState);
+  const numQuestions = questions.length;
+  console.log(numQuestions);
+  console.log(questions);
+
   useEffect(function () {
     // fetch(`https://quiz-master-data.cyclic.cloud/questions/${apiRequest}`)
     fetch(`https://quiz-master-data.cyclic.cloud/questions/10`)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => dispatch({ type: "dataReceived", payload: data }))
+      .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
 
   return (
