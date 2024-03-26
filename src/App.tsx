@@ -1,4 +1,5 @@
 import "./App.css";
+import StartScreen from "./StartScreen";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content min-h-full min-w-full">
           <div className="max-w-xl"></div>
+          <StartScreen />
         </div>
       </div>
     </div>
