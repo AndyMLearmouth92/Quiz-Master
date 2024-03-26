@@ -1,7 +1,15 @@
+import { useEffect } from "react";
 import "./App.css";
 import StartScreen from "./StartScreen";
 
 function App() {
+  useEffect(function () {
+    // fetch(`https://quiz-master-data.cyclic.cloud/questions/${apiRequest}`)
+    fetch(`https://quiz-master-data.cyclic.cloud/questions/10`)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <div>
       <div
