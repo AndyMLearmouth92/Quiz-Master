@@ -1,4 +1,10 @@
-export default function NumOfQuestions() {
+import QuestionNumSelectionButton from "./NumberOfQuestionsButton";
+
+interface NumOfQuestionsProps {
+  dispatch: any;
+}
+
+const NumOfQuestions: React.FC<NumOfQuestionsProps> = ({ dispatch }) => {
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl h-3/5 flex bg-slate-600">
       <div className="card-body flex">
@@ -8,10 +14,13 @@ export default function NumOfQuestions() {
         </div>
         <div className="justify-center">
           <div className="">
-            <button>Question option 1</button>
+            <QuestionNumSelectionButton dispatch={dispatch} val={10} />
+            <QuestionNumSelectionButton dispatch={dispatch} val={20} />
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default NumOfQuestions;
