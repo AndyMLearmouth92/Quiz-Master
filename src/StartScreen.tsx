@@ -1,7 +1,7 @@
 import QuestionNumSelectionButton from "./NumberOfQuestionsButton";
 
 interface NumOfQuestionsProps {
-  dispatch: React.Dispatch<{ type: string; payload: number }>;
+  dispatch: any;
 }
 
 const NumOfQuestions: React.FC<NumOfQuestionsProps> = ({ dispatch }) => {

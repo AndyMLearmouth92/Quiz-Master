@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from "react";
 import "./App.css";
 import StartScreen from "./StartScreen";
+import QuestionAnswerBox from "./components/QuestionAnswerBox";
 
 interface Question {
   answerOptions: {
@@ -13,13 +14,14 @@ interface Question {
 
 interface State {
   questions: Question[];
-  questionCount: number;
-  status?: string;
+  questionCount: null | number;
+  status: string;
 }
 
 const initialState: State = {
   questions: [],
-  questionCount: 10,
+  questionCount: null,
+  status: "SelectNumOfQuestions",
 };
 
 type Action =
@@ -51,7 +53,7 @@ function reducer(state: State, action: Action): State {
 }
 
 const App: React.FC = (): JSX.Element => {
-  const [{ questions, questionCount }, dispatch] = useReducer(
+  const [{ questions, questionCount, status }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -59,9 +61,12 @@ const App: React.FC = (): JSX.Element => {
 
   useEffect(
     function () {
+      if (questionCount === null) {
+        return;
+      }
       fetch(`https://quiz-master-data.cyclic.cloud/questions/${questionCount}`)
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => dispatch({ type: "dataReceived", payload: data }))
         .catch((err) => dispatch({ type: "dataFailed" }));
     },
     [questionCount]
@@ -76,7 +81,10 @@ const App: React.FC = (): JSX.Element => {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content min-h-full min-w-full">
           <div className="max-w-xl"></div>
-          <StartScreen dispatch={dispatch} />
+          {status === "SelectNumOfQuestions" && (
+            <StartScreen dispatch={dispatch} />
+          )}
+          {status === "ready" && <QuestionAnswerBox />}
         </div>
       </div>
     </div>
