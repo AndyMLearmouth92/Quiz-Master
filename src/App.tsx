@@ -50,7 +50,7 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-function App() {
+const App: React.FC = (): JSX.Element => {
   const [{ questions, questionCount }, dispatch] = useReducer(
     reducer,
     initialState
@@ -81,6 +81,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

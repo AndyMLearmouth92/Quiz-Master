@@ -1,5 +1,5 @@
 interface QuestionNumSelectionButtonProps {
-  dispatch: any;
+  dispatch: React.Dispatch<{ type: string; payload: number }>;
   val: number;
 }
 
