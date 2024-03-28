@@ -1,10 +1,6 @@
 import QuestionNumSelectionButton from "./NumberOfQuestionsButton";
 
-interface NumOfQuestionsProps {
-  dispatch: any;
-}
-
-const NumOfQuestions: React.FC<NumOfQuestionsProps> = ({ dispatch }) => {
+const NumOfQuestions: React.FC = () => {
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl h-3/5 flex bg-slate-600">
       <div className="card-body flex">
@@ -14,8 +10,8 @@ const NumOfQuestions: React.FC<NumOfQuestionsProps> = ({ dispatch }) => {
         </div>
         <div className="justify-center">
           <div className="">
-            <QuestionNumSelectionButton dispatch={dispatch} val={10} />
-            <QuestionNumSelectionButton dispatch={dispatch} val={20} />
+            <QuestionNumSelectionButton val={10} />
+            <QuestionNumSelectionButton val={20} />
           </div>
         </div>
       </div>
