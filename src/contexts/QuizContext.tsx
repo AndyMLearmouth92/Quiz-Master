@@ -11,7 +11,7 @@ interface State {
   questionCount: null | number;
   status: string;
   index: number;
-  points: number;
+  points: any;
 }
 
 const initialState: State = {
@@ -26,7 +26,8 @@ type Action =
   | { type: "setNumOfQuestions"; payload: number }
   | { type: "dataReceived"; payload: Question[] }
   | { type: "dataFailed" }
-  | { type: "newAnswer"; payload: boolean };
+  | { type: "newAnswer"; payload: boolean }
+  | { type: "finish" };
 
 type QuizDispatch = Dispatch<Action>;
 
@@ -54,7 +55,6 @@ interface Question {
 }
 
 function reducer(state: State, action: Action): State {
-  console.log(state.points);
   switch (action.type) {
     case "setNumOfQuestions":
       return {
@@ -76,7 +76,14 @@ function reducer(state: State, action: Action): State {
       return {
         ...state,
         points: action.payload ? state.points + 1 : state.points,
-        index: state.index + 1,
+        index:
+          state.questions.length === state.index + 1
+            ? state.index
+            : state.index + 1,
+        status:
+          state.questions.length === state.index + 1
+            ? "finished"
+            : state.status,
       };
     default:
       throw new Error("Action unknown");
@@ -84,10 +91,8 @@ function reducer(state: State, action: Action): State {
 }
 
 function QuizProvider({ children }) {
-  const [{ questions, questionCount, status, index }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ questions, questionCount, status, index, points }, dispatch] =
+    useReducer(reducer, initialState);
   const numQuestions = questions.length;
   const currentQuestion = questions[index];
 
@@ -113,6 +118,7 @@ function QuizProvider({ children }) {
         numQuestions,
         currentQuestion,
         dispatch,
+        points,
       }}
     >
       {children}

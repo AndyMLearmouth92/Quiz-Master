@@ -1,6 +1,7 @@
 import "./App.css";
 import StartScreen from "./StartScreen";
 import QuestionAnswerBox from "./components/QuestionAnswerBox";
+import Result from "./components/Result";
 import { useQuiz } from "./contexts/QuizContext";
 
 const App: React.FC = (): JSX.Element => {
@@ -16,6 +17,7 @@ const App: React.FC = (): JSX.Element => {
           <div className="max-w-xl"></div>
           {status === "SelectNumOfQuestions" && <StartScreen />}
           {status === "ready" && <QuestionAnswerBox />}
+          {status === "finished" && <Result />}
         </div>
       </div>
     </div>
