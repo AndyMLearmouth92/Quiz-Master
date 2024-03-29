@@ -1,15 +1,13 @@
-import { ReactElement } from "react";
 import { useQuiz } from "../contexts/QuizContext";
 
 interface OptionsProps {
-  children: ReactElement;
   answerOption: {
     answerText: string;
     isCorrect: boolean;
   };
 }
 
-export default function Options({ children, answerOption }: OptionsProps) {
+export default function Options({ answerOption }: OptionsProps) {
   const { dispatch } = useQuiz();
   // const hasAnswered = answer !== null;
   return (
@@ -19,7 +17,7 @@ export default function Options({ children, answerOption }: OptionsProps) {
         dispatch({ type: "newAnswer", payload: answerOption.isCorrect })
       }
     >
-      {children}
+      {answerOption.answerText}
     </button>
   );
 }

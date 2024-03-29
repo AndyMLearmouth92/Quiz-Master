@@ -14,9 +14,7 @@ const QuestionAnswerBox: React.FC = () => {
           <div className="">
             {currentQuestion &&
               currentQuestion.answerOptions.map((answerOption, index) => (
-                <Options key={index} answerOption={answerOption}>
-                  {answerOption.answerText}
-                </Options>
+                <Options key={index} answerOption={answerOption} />
               ))}
           </div>
         </div>
