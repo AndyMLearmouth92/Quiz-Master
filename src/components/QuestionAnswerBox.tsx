@@ -12,12 +12,11 @@ const QuestionAnswerBox: React.FC = () => {
         <Question />
         <div className="justify-center ">
           <div className="">
-            {/* {currentQuestion?.answerOptions?.map((answerText) => {
-              <Options>{answerText}</Options>;
-            })} */}
             {currentQuestion &&
-              currentQuestion.answerOptions.map((answer, index) => (
-                <Options key={index}>{answer.answerText}</Options>
+              currentQuestion.answerOptions.map((answerOption, index) => (
+                <Options key={index} answerOption={answerOption}>
+                  {answerOption.answerText}
+                </Options>
               ))}
           </div>
         </div>

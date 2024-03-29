@@ -11,6 +11,7 @@ interface State {
   questionCount: null | number;
   status: string;
   index: number;
+  points: number;
 }
 
 const initialState: State = {
@@ -18,12 +19,14 @@ const initialState: State = {
   questionCount: null,
   status: "SelectNumOfQuestions",
   index: 0,
+  points: 0,
 };
 
 type Action =
   | { type: "setNumOfQuestions"; payload: number }
   | { type: "dataReceived"; payload: Question[] }
-  | { type: "dataFailed" };
+  | { type: "dataFailed" }
+  | { type: "newAnswer"; payload: boolean };
 
 type QuizDispatch = Dispatch<Action>;
 
@@ -31,6 +34,7 @@ const QuizContext = createContext<{
   questions: Question[];
   status: string;
   index: number;
+  points: number;
   numQuestions: number;
   currentQuestion: Question | null;
   dispatch: QuizDispatch;
@@ -50,6 +54,7 @@ interface Question {
 }
 
 function reducer(state: State, action: Action): State {
+  console.log(state.points);
   switch (action.type) {
     case "setNumOfQuestions":
       return {
@@ -66,6 +71,12 @@ function reducer(state: State, action: Action): State {
       return {
         ...state,
         status: "error",
+      };
+    case "newAnswer":
+      return {
+        ...state,
+        points: action.payload ? state.points + 1 : state.points,
+        index: state.index + 1,
       };
     default:
       throw new Error("Action unknown");
