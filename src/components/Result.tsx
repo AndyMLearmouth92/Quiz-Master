@@ -10,6 +10,7 @@ export default function Result() {
   if (percentage >= 0 && percentage < 50) emoji = "🤨";
   if (percentage === 0) emoji = "🤦‍♂️";
 
+  const { dispatch } = useQuiz();
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl h-5/6 bg-slate-600">
       <div className="card-body flex">
@@ -30,7 +31,10 @@ export default function Result() {
             </div>
           </div>
         </dialog>
-        <button className="btn btn-neutral btn-primary m-2 btn-answer w-11/12 h-14 text-xl">
+        <button
+          className="btn btn-neutral btn-primary m-2 btn-answer w-11/12 h-14 text-xl"
+          onClick={() => dispatch({ type: "restart" })}
+        >
           Restart Quiz
         </button>
       </div>

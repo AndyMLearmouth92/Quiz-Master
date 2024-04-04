@@ -27,7 +27,8 @@ type Action =
   | { type: "dataReceived"; payload: Question[] }
   | { type: "dataFailed" }
   | { type: "newAnswer"; payload: boolean }
-  | { type: "finish" };
+  | { type: "finish" }
+  | { type: "restart" };
 
 type QuizDispatch = Dispatch<Action>;
 
@@ -85,6 +86,8 @@ function reducer(state: State, action: Action): State {
             ? "finished"
             : state.status,
       };
+    case "restart":
+      return initialState;
     default:
       throw new Error("Action unknown");
   }
