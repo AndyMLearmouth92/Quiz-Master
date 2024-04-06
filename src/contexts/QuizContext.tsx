@@ -11,7 +11,7 @@ interface State {
   questionCount: null | number;
   status: string;
   index: number;
-  points: any;
+  points: number;
 }
 
 const initialState: State = {
