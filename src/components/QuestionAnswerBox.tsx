@@ -6,7 +6,7 @@ const QuestionAnswerBox: React.FC = () => {
   const { currentQuestion } = useQuiz();
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl h-3/5 flex bg-slate-600">
+    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 size-3/5">
       <div className="card-body flex">
         <Question />
         <div className="justify-center ">
