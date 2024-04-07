@@ -10,7 +10,7 @@ export default function Result() {
   if (percentage >= 0 && percentage < 50) emoji = "🤨";
   if (percentage === 0) emoji = "🤦‍♂️";
 
-  const { dispatch } = useQuiz();
+  const { dispatch, userAnswers } = useQuiz();
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl h-5/6 bg-slate-600">
       <div className="card-body flex">
@@ -18,19 +18,34 @@ export default function Result() {
           <span>{emoji}</span> You scored <strong>{points}</strong> out of{" "}
           {numQuestions} ({Math.ceil(percentage)}%)
         </h1>
+        <div>
+          <div>
+            {userAnswers.map((_, i) => {
+              return (
+                <button
+                  className="btn btn-neutral btn-primary m-2 btn-answer text-xl w-1/6"
+                  // onClick={() => {
 
-        <dialog id="my_modal_1" className="modal">
-          <div className="modal-box bg-slate-700 min-w-[40%]">
-            <h3 className="font-bold text-lg">Outcome</h3>
-            <div className="modal-action">
-              <form method="dialog">
-                <button className="btn btn-neutral btn-primary m-2 btn-answer text-xl">
-                  Close
+                  // }}
+                  style={
+                    userAnswers[i].isCorrect === true
+                      ? { backgroundColor: "#267326" }
+                      : { backgroundColor: "#b30000" }
+                  }
+                >
+                  Q{i + 1}
                 </button>
-              </form>
-            </div>
+              );
+            })}
           </div>
-        </dialog>
+        </div>
+
+        <button
+          className="btn btn-neutral btn-primary m-2 btn-answer w-11/12 h-14 text-xl"
+          onClick={() => dispatch({ type: "reviewAnswers" })}
+        >
+          Review Answers
+        </button>
         <button
           className="btn btn-neutral btn-primary m-2 btn-answer w-11/12 h-14 text-xl"
           onClick={() => dispatch({ type: "restart" })}

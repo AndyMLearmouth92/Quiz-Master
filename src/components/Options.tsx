@@ -13,9 +13,7 @@ export default function Options({ answerOption }: OptionsProps) {
   return (
     <button
       className="btn btn-neutral btn-primary m-2 btn-answer w-10/12 h-14 text-xl"
-      onClick={() =>
-        dispatch({ type: "newAnswer", payload: answerOption.isCorrect })
-      }
+      onClick={() => dispatch({ type: "newAnswer", payload: answerOption })}
     >
       {answerOption.answerText}
     </button>

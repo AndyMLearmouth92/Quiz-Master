@@ -18,6 +18,7 @@ const App: React.FC = (): JSX.Element => {
           {status === "SelectNumOfQuestions" && <StartScreen />}
           {status === "ready" && <QuestionAnswerBox />}
           {status === "finished" && <Result />}
+          {status === "reviewQuestions" && <QuestionAnswerBox />}
         </div>
       </div>
     </div>
