@@ -2,6 +2,7 @@ import { useQuiz } from "../contexts/QuizContext";
 import Options from "./Options";
 import Question from "./Question";
 import ProgressBar from "./ProgressBar";
+import Timer from "./Timer";
 
 const QuestionAnswerBox: React.FC = () => {
   const { currentQuestion } = useQuiz();
@@ -18,6 +19,7 @@ const QuestionAnswerBox: React.FC = () => {
               ))}
           </div>
           <ProgressBar />
+          <Timer />
         </div>
       </div>
     </div>

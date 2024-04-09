@@ -12,7 +12,9 @@ interface State {
   status: string;
   index: number;
   points: number;
+  secondsRemaining: null | number;
 }
+const SECS_PER_QUESTION = 30;
 
 const initialState: State = {
   questions: [],
@@ -20,6 +22,7 @@ const initialState: State = {
   status: "SelectNumOfQuestions",
   index: 0,
   points: 0,
+  secondsRemaining: null,
 };
 
 type Action =
@@ -28,7 +31,8 @@ type Action =
   | { type: "dataFailed" }
   | { type: "newAnswer"; payload: boolean }
   | { type: "finish" }
-  | { type: "restart" };
+  | { type: "restart" }
+  | { type: "tick" };
 
 type QuizDispatch = Dispatch<Action>;
 
@@ -40,6 +44,7 @@ const QuizContext = createContext<{
   numQuestions: number;
   currentQuestion: Question | null;
   dispatch: QuizDispatch;
+  secondsRemaining: null | number;
 }>({
   ...initialState,
   numQuestions: 0,
@@ -67,6 +72,7 @@ function reducer(state: State, action: Action): State {
         ...state,
         questions: action.payload,
         status: "ready",
+        secondsRemaining: state.questionCount * SECS_PER_QUESTION,
       };
     case "dataFailed":
       return {
@@ -86,6 +92,12 @@ function reducer(state: State, action: Action): State {
             ? "finished"
             : state.status,
       };
+    case "tick":
+      return {
+        ...state,
+        secondsRemaining: state.secondsRemaining - 1,
+        status: state.secondsRemaining === 0 ? "finished" : state.status,
+      };
     case "restart":
       return initialState;
     default:
@@ -94,8 +106,10 @@ function reducer(state: State, action: Action): State {
 }
 
 function QuizProvider({ children }) {
-  const [{ questions, questionCount, status, index, points }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { questions, questionCount, status, index, points, secondsRemaining },
+    dispatch,
+  ] = useReducer(reducer, initialState);
   const numQuestions = questions.length;
   const currentQuestion = questions[index];
 
@@ -122,6 +136,7 @@ function QuizProvider({ children }) {
         currentQuestion,
         dispatch,
         points,
+        secondsRemaining,
       }}
     >
       {children}
