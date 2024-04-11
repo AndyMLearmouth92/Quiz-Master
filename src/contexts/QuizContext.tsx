@@ -34,7 +34,7 @@ type Action =
   | { type: "newAnswer"; payload: Answer }
   | { type: "finish" }
   | { type: "tick" }
-  | { type: "reviewAnswers"; payload: Question[] }
+  | { type: "reviewAnswers" }
   | { type: "restart" };
 
 type QuizDispatch = Dispatch<Action>;
@@ -109,8 +109,7 @@ function reducer(state: State, action: Action): State {
     case "reviewAnswers":
       return {
         ...state,
-        questions: action.payload,
-        userAnswers: state.userAnswers,
+        status: "reviewAnswers",
       };
     case "restart":
       return initialState;
