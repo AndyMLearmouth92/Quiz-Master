@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useQuiz } from "../contexts/QuizContext";
 
-function Timer() {
+// Timer for the user when they are undertaking the quiz.
+const Timer: React.FC = () => {
   const { dispatch, secondsRemaining } = useQuiz();
-
   const mins = Math.floor((secondsRemaining || 0) / 60);
   const seconds = (secondsRemaining || 0) % 60;
 
@@ -40,6 +40,6 @@ function Timer() {
       </div>
     </div>
   );
-}
+};
 
 export default Timer;
