@@ -4,26 +4,27 @@ import {
   useReducer,
   useEffect,
   Dispatch,
+  type ReactNode,
 } from "react";
 
 interface State {
   questions: Question[];
-  questionCount: null | number;
+  questionCount: number;
   status: string;
   index: number;
   points: number;
-  secondsRemaining: null | number;
+  secondsRemaining: number;
   userAnswers: Answer[];
 }
 const SECS_PER_QUESTION = 30;
 
 const initialState: State = {
   questions: [],
-  questionCount: null,
+  questionCount: 0,
   status: "selectNumOfQuestions",
   index: 0,
   points: 0,
-  secondsRemaining: null,
+  secondsRemaining: 0,
   userAnswers: [],
 };
 
@@ -51,7 +52,7 @@ const QuizContext = createContext<{
   numQuestions: number;
   currentQuestion: Question | null;
   dispatch: QuizDispatch;
-  secondsRemaining: null | number;
+  secondsRemaining: number;
   userAnswers: Answer[];
 }>({
   ...initialState,
@@ -149,7 +150,12 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-function QuizProvider({ children }) {
+interface Props {
+  children?: ReactNode;
+  // any props that come into the component
+}
+
+function QuizProvider({ children }: Props) {
   const [
     {
       questions,
@@ -167,13 +173,13 @@ function QuizProvider({ children }) {
 
   useEffect(
     function () {
-      if (questionCount === null) {
+      if (questionCount === 0) {
         return;
       }
       fetch(`https://quiz-master-data.cyclic.cloud/questions/${questionCount}`)
         .then((res) => res.json())
         .then((data) => dispatch({ type: "dataReceived", payload: data }))
-        .catch((err) => dispatch({ type: "dataFailed" }));
+        .catch(() => dispatch({ type: "dataFailed" }));
     },
     [questionCount]
   );
