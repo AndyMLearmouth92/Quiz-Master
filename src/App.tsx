@@ -1,5 +1,6 @@
 import "./App.css";
 import StartScreen from "./StartScreen";
+import Error from "./components/Error";
 import QuestionAnswerBox from "./components/QuestionAnswerBox";
 import Result from "./components/Result";
 import QuestionReviewBox from "./components/QuestionReviewBox";
@@ -16,7 +17,8 @@ const App: React.FC = (): JSX.Element => {
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content min-h-full min-w-full">
           <div className="max-w-xl"></div>
-          {status === "SelectNumOfQuestions" && <StartScreen />}
+          {status === "selectNumOfQuestions" && <StartScreen />}
+          {status === "error" && <Error />}
           {status === "ready" && <QuestionAnswerBox />}
           {status === "finished" && <Result />}
           {status === "reviewAnswers" && <QuestionReviewBox />}
