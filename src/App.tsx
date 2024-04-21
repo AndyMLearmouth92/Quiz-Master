@@ -1,4 +1,3 @@
-import "./App.css";
 import StartScreen from "./StartScreen";
 import Loader from "./components/Loader";
 import Error from "./components/Error";
