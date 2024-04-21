@@ -28,9 +28,9 @@ const Result: React.FC = () => {
   }, [percentage]);
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl h-5/6 bg-slate-600 size-3/5">
+    <div className="card lg:card-side bg-base-100 shadow-xl h-5/6 bg-slate-600 lg:size-3/5">
       <div className="card-body flex">
-        <h1 className="text-5xl mb-6">
+        <h1 className="text-3xl lg:text-5xl lg:mb-6">
           <span>{emoji}</span> You scored <strong>{points}</strong> out of{" "}
           {numQuestions} ({Math.ceil(percentage)}%)
         </h1>
@@ -39,7 +39,7 @@ const Result: React.FC = () => {
             {userAnswers.map((_, i) => {
               return (
                 <button
-                  className="btn btn-neutral btn-primary m-2 btn-answer text-xl w-1/6"
+                  className="btn btn-neutral btn-primary text-md m-2 btn-answer lg:text-xl w-1/6"
                   onClick={() =>
                     dispatch({
                       type: "selectAnswer",
@@ -57,15 +57,15 @@ const Result: React.FC = () => {
               );
             })}
           </div>
-          <h2 className="text-3xl m-6">{message}</h2>
+          <h2 className="text-2xl m-2 lg:text-3xl lg:m-6">{message}</h2>
           <button
-            className="btn btn-neutral btn-primary m-2 btn-answer w-11/12 h-14 text-xl"
+            className="btn btn-neutral btn-primary text-md m-2 btn-answer w-11/12 lg:h-14 lg:text-xl"
             onClick={() => dispatch({ type: "reviewAnswers" })}
           >
             Review Answers
           </button>
           <button
-            className="btn btn-neutral btn-primary m-2 btn-answer w-11/12 h-14 text-xl"
+            className="btn btn-neutral btn-primary text-md m-2 btn-answer w-11/12 lg:h-14 lg:text-xl"
             onClick={() => dispatch({ type: "restart" })}
           >
             Restart Quiz
