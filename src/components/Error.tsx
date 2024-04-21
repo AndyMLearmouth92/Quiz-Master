@@ -1,4 +1,5 @@
 const Error: React.FC = () => {
+  // Renders an error component if the data cannot be fetched from the API.
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 size-3/5">
       <div className="card-body flex">
