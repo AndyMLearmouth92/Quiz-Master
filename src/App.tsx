@@ -1,5 +1,6 @@
 import "./App.css";
 import StartScreen from "./StartScreen";
+import Loader from "./components/Loader";
 import Error from "./components/Error";
 import QuestionAnswerBox from "./components/QuestionAnswerBox";
 import Result from "./components/Result";
@@ -18,6 +19,7 @@ const App: React.FC = (): JSX.Element => {
         <div className="hero-content text-center text-neutral-content min-h-full min-w-full">
           <div className="max-w-xl"></div>
           {status === "selectNumOfQuestions" && <StartScreen />}
+          {status === "loading" && <Loader />}
           {status === "error" && <Error />}
           {status === "ready" && <QuestionAnswerBox />}
           {status === "finished" && <Result />}

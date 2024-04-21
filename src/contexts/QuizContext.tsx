@@ -77,6 +77,7 @@ function reducer(state: State, action: Action): State {
       return {
         ...state,
         questionCount: action.payload,
+        status: "loading",
       };
     case "dataReceived":
       return {
