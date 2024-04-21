@@ -13,11 +13,11 @@ const ProgressBar: React.FC = () => {
       )}
       <div className="flex justify-between mb-3">
         {
-          <span className="lg:text-2xl">
+          <span className="md:text-2xl">
             Question {index + 1} of {numQuestions}
           </span>
         }
-        <span className="lg:text-2xl">{points} correct</span>
+        <span className="md:text-2xl">{points} correct</span>
       </div>
     </div>
   );
