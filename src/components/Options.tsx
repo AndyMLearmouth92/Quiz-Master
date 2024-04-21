@@ -29,7 +29,7 @@ const Options = ({ answerOption }: OptionsProps) => {
     <div>
       {undertakingQuiz ? (
         <button
-          className="btn btn-neutral btn-primary m-2 btn-answer w-10/12 h-14 text-xl"
+          className="btn btn-neutral btn-primary btn-answer text-md w-11/12 lg:w-10/12 lg:h-14 lg:text-xl m-2"
           onClick={() => dispatch({ type: "newAnswer", payload: answerOption })}
         >
           {answerOption.answerText}
@@ -39,7 +39,7 @@ const Options = ({ answerOption }: OptionsProps) => {
           style={{
             backgroundColor,
           }}
-          className="btn btn-neutral btn-primary m-2 btn-answer w-10/12 h-14 text-xl"
+          className="btn btn-neutral btn-primary btn-answer m-2 text-md w-10/12 lg:h-14 lg:text-xl"
         >
           {answerOption.answerText}
         </button>

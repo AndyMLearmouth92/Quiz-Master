@@ -11,13 +11,13 @@ const ProgressBar: React.FC = () => {
       ) : (
         <progress max={numQuestions} value={index + 1} className="progress" />
       )}
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-3">
         {
-          <span className="text-2xl">
+          <span className="lg:text-2xl">
             Question {index + 1} of {numQuestions}
           </span>
         }
-        <span className="text-2xl">{points} correct</span>
+        <span className="lg:text-2xl">{points} correct</span>
       </div>
     </div>
   );
