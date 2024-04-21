@@ -2,7 +2,7 @@ import QuestionNumSelectionButton from "./NumberOfQuestionsButton";
 
 const NumOfQuestions: React.FC = () => {
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 ">
+    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 mx-auto">
       <div className="card-body flex">
         <div className="mb-4">
           <h1 className="text-5xl mb-8">Welcome to Quiz Master </h1>

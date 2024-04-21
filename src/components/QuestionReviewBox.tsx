@@ -9,11 +9,11 @@ const QuestionAnswerBox: React.FC = () => {
   const { currentQuestion, index, numQuestions, points, dispatch } = useQuiz();
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 size-3/5">
+    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 size-4/5 min-w-80 max-h-screen lg:size-3/5">
       <div className="card-body flex">
         <Question />
         <div className="justify-center">
-          <div className="mb-6">
+          <div className="lg:mb-6">
             {currentQuestion &&
               currentQuestion.answerOptions.map((answerOption, index) => (
                 <Options key={index} answerOption={answerOption} />
@@ -26,7 +26,7 @@ const QuestionAnswerBox: React.FC = () => {
                 onClick={() => dispatch({ type: "previousAnswer" })}
               >
                 <svg
-                  className="w-5 mr-2"
+                  className="hidden w-5 mr-2 lg:inline"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ const QuestionAnswerBox: React.FC = () => {
               >
                 Next question
                 <svg
-                  className="w-5 ml-2"
+                  className="hidden w-5 ml-2 lg:inline"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
