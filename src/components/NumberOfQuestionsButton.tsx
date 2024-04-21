@@ -1,4 +1,4 @@
-import { useQuiz } from "./contexts/QuizContext";
+import { useQuiz } from "../contexts/QuizContext";
 
 interface QuestionNumSelectionButtonProps {
   // dispatch: React.Dispatch<{ type: string; payload: number }>;

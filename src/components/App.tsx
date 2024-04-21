@@ -1,10 +1,10 @@
 import StartScreen from "./StartScreen";
-import Loader from "./components/Loader";
-import Error from "./components/Error";
-import QuestionAnswerBox from "./components/QuestionAnswerBox";
-import Result from "./components/Result";
-import QuestionReviewBox from "./components/QuestionReviewBox";
-import { useQuiz } from "./contexts/QuizContext";
+import Loader from "./Loader";
+import Error from "./Error";
+import QuestionAnswerBox from "./QuestionAnswerBox";
+import Result from "./Result";
+import QuestionReviewBox from "./QuestionReviewBox";
+import { useQuiz } from "../contexts/QuizContext";
 
 const App: React.FC = (): JSX.Element => {
   const { status } = useQuiz();
