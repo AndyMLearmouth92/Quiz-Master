@@ -35,13 +35,15 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Optimisations
 
-+ Add tests to the application using React Testing Library and Jest.
+- Add tests to the application using React Testing Library and Jest.
 
 ## Lessons Learned
-+ First project using TypeScript.
-+ First time using context and useReducer.
-+ Keep track of the user's highscore using local storage.
-+ Added a progress bar and a timer counting down how long the user has left.
+
+- First project using TypeScript.
+- First time using context and useReducer.
+- Keep track of the user's highscore using local storage.
+- Added a progress bar and a timer counting down how long the user has left.
+- Added a loading component for when the data is being fetched from the API and an error component if the data fails to load.
 
 ## License
 
