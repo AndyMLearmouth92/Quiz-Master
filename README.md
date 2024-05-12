@@ -1,31 +1,47 @@
-# React + TypeScript + Vite
+# Quiz Master
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Quiz Master is an interactive quiz game which allows the user to select the number of questions they would like to undertake, answer the questions and once they are finished answering provides a total of the correct answers. The application also allows users to review their answers at the end while providing the correct answer for any questions that the user answered incorrectly.
 
-Currently, two official plugins are available:
+You can view Quiz Master <a href="https://quizmasterchallenge.netlify.app">here</a>.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img width="1470" alt="image" src="https://github.com/AndyMLearmouth92/Quiz-Master/assets/108182837/51718ca9-f5d3-4fa8-a66a-792484f14a75">
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installation
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# Quiz-Masters
+### Running the application
+
+```bash
+npm run dev
+npm run build-css
+```
+
+Runs the app in the development mode.
+
+```bash
+npm run build
+```
+
+Builds the app for production to the `build` folder.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Optimisations
+
+Add tests to the application using React Testing Library and Jest.
+
+## Lessons Learned
++ First project using TypeScript.
++ First time using context and useReducer.
++ Keep track of the user's highscore using local storage.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
