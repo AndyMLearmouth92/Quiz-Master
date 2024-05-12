@@ -35,7 +35,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Optimisations
 
-Add tests to the application using React Testing Library and Jest.
++ Add tests to the application using React Testing Library and Jest.
 
 ## Lessons Learned
 + First project using TypeScript.
