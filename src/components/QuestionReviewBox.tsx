@@ -9,7 +9,7 @@ const QuestionAnswerBox: React.FC = () => {
   const { currentQuestion, index, numQuestions, points, dispatch } = useQuiz();
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 size-4/5 min-w-80 max-h-screen md:size-4/5 lg:size-3/5">
+    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 size-4/5 min-w-80 max-h-screen md:size-4/5 xl:size-3/5">
       <div className="card-body flex">
         <Question />
         <div className="justify-center">
@@ -26,7 +26,7 @@ const QuestionAnswerBox: React.FC = () => {
                 onClick={() => dispatch({ type: "previousAnswer" })}
               >
                 <svg
-                  className="hidden w-5 mr-2 lg:inline"
+                  className="hidden w-5 mr-2 xl:inline"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ const QuestionAnswerBox: React.FC = () => {
               >
                 Next question
                 <svg
-                  className="hidden w-5 ml-2 lg:inline"
+                  className="hidden w-5 ml-2 xl:inline"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"

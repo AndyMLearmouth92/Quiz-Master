@@ -8,7 +8,7 @@ import Timer from "./Timer";
 const QuestionAnswerBox: React.FC = () => {
   const { currentQuestion } = useQuiz();
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 min-w-80 max-h-screen md:size-4/5 lg:size-3/5">
+    <div className="card lg:card-side bg-base-100 shadow-xl flex bg-slate-600 min-w-80 max-h-screen md:size-4/5 xl:size-3/5">
       <div className="card-body flex">
         <Question />
         <div className="justify-center">
