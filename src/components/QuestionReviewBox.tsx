@@ -4,7 +4,6 @@ import Question from "./Question";
 import ProgressBar from "./ProgressBar";
 import Button from "./Button";
 
-// The component which is delayed when the user is reviewing their answers.
 const QuestionAnswerBox: React.FC = () => {
   const { currentQuestion, index, numQuestions, points, dispatch } = useQuiz();
 
@@ -14,13 +13,15 @@ const QuestionAnswerBox: React.FC = () => {
         <Question />
         <div className="justify-center">
           <div className="md:mb-6">
-            {currentQuestion &&
-              currentQuestion.answerOptions.map((answerOption, index) => (
-                <Options key={index} answerOption={answerOption} />
-              ))}
+            {currentQuestion?.answerOptions.map((answerOption) => (
+              <Options
+                key={answerOption.answerText}
+                answerOption={answerOption}
+              />
+            ))}
           </div>
           <div className="flex justify-around">
-            {index > 0 ? (
+            {index > 0 && (
               <Button
                 className="btn btn-neutral btn-primary m-2 btn-answer w-3/12 h-14 text-l"
                 onClick={() => dispatch({ type: "previousAnswer" })}
@@ -39,27 +40,16 @@ const QuestionAnswerBox: React.FC = () => {
                 </svg>
                 Previous question
               </Button>
-            ) : (
-              <Button
-                className="btn btn-neutral btn-primary m-2 btn-answer w-3/12 h-14 text-l"
-                onClick={() =>
-                  dispatch({ type: "finished", payload: String(points) })
-                }
-              >
-                Results page
-              </Button>
             )}
-            {index > 0 && index + 2 <= numQuestions && (
-              <Button
-                className="btn btn-neutral btn-primary m-2 btn-answer w-3/12 h-14 text-l"
-                onClick={() =>
-                  dispatch({ type: "finished", payload: String(points) })
-                }
-              >
-                Results page
-              </Button>
-            )}
-            {index + 2 <= numQuestions ? (
+            <Button
+              className="btn btn-neutral btn-primary m-2 btn-answer w-3/12 h-14 text-l"
+              onClick={() =>
+                dispatch({ type: "finished", payload: String(points) })
+              }
+            >
+              Results page
+            </Button>
+            {index + 2 <= numQuestions && (
               <Button
                 className="btn btn-neutral btn-primary m-2 btn-answer w-3/12 h-14 text-l"
                 onClick={() => dispatch({ type: "nextAnswer" })}
@@ -77,15 +67,6 @@ const QuestionAnswerBox: React.FC = () => {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-              </Button>
-            ) : (
-              <Button
-                className="btn btn-neutral btn-primary m-2 btn-answer w-3/12 h-14 text-l"
-                onClick={() =>
-                  dispatch({ type: "finished", payload: String(points) })
-                }
-              >
-                Results page
               </Button>
             )}
           </div>

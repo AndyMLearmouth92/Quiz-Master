@@ -1,13 +1,18 @@
 interface ButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-  children: string | any;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  children: React.ReactNode;
   className: string;
+  style?: React.CSSProperties;
 }
 
-//Reusable button which is used for next question, previous question and to return to the results page.
-const Button: React.FC<ButtonProps> = ({ onClick, children, className }) => {
+const Button: React.FC<ButtonProps> = ({
+  onClick,
+  children,
+  className,
+  style = {},
+}) => {
   return (
-    <button className={className} onClick={onClick}>
+    <button className={className} onClick={onClick} style={style}>
       {children}
     </button>
   );

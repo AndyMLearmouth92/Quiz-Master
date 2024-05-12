@@ -138,7 +138,6 @@ function reducer(state: State, action: Action): State {
         status: "reviewAnswers",
       };
     case "finished":
-      // eslint-disable-next-line no-case-declarations
       return {
         ...state,
         status: "finished",
@@ -152,7 +151,6 @@ function reducer(state: State, action: Action): State {
 
 interface Props {
   children?: ReactNode;
-  // any props that come into the component
 }
 
 function QuizProvider({ children }: Props) {

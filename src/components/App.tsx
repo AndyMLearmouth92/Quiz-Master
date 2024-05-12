@@ -6,7 +6,7 @@ import Result from "./Result";
 import QuestionReviewBox from "./QuestionReviewBox";
 import { useQuiz } from "../contexts/QuizContext";
 
-const App: React.FC = (): JSX.Element => {
+const App: React.FC = () => {
   const { status } = useQuiz();
   return (
     <div>

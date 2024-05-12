@@ -1,22 +1,18 @@
 import { useEffect } from "react";
 import { useQuiz } from "../contexts/QuizContext";
 
-// Timer for the user when they are undertaking the quiz.
 const Timer: React.FC = () => {
   const { dispatch, secondsRemaining } = useQuiz();
   const mins = Math.floor((secondsRemaining || 0) / 60);
   const seconds = (secondsRemaining || 0) % 60;
 
-  useEffect(
-    function () {
-      const id = setInterval(function () {
-        dispatch({ type: "tick" });
-      }, 1000);
+  useEffect(() => {
+    const id = setInterval(() => {
+      dispatch({ type: "tick" });
+    }, 1000);
 
-      return () => clearInterval(id);
-    },
-    [dispatch]
-  );
+    return () => clearInterval(id);
+  }, [dispatch]);
 
   return (
     <div className="grid grid-flow-col gap-5 text-center auto-cols-max flex justify-center">

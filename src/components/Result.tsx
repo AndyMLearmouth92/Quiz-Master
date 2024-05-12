@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuiz } from "../contexts/QuizContext";
+import Button from "./Button";
 
-// Shows the user their result from the quiz and gives them the option of reviewing their answers or restarting.
 const Result: React.FC = () => {
   const [message, setMessage] = useState("");
   const { points, numQuestions, dispatch, userAnswers } = useQuiz();
@@ -36,9 +36,10 @@ const Result: React.FC = () => {
         </h1>
         <div>
           <div>
-            {userAnswers.map((_, i) => {
+            {userAnswers.map((answer, i) => {
               return (
-                <button
+                <Button
+                  key={answer.answerText}
                   className="btn btn-neutral btn-primary text-md m-2 btn-answer md:text-xl w-1/6"
                   onClick={() =>
                     dispatch({
@@ -46,30 +47,29 @@ const Result: React.FC = () => {
                       payload: i,
                     })
                   }
-                  style={
-                    userAnswers[i].isCorrect === true
-                      ? { backgroundColor: "#1e7216" }
-                      : { backgroundColor: "#981e20" }
-                  }
+                  style={{
+                    backgroundColor:
+                      userAnswers[i].isCorrect === true ? "#1e7216" : "#981e20",
+                  }}
                 >
                   Q{i + 1}
-                </button>
+                </Button>
               );
             })}
           </div>
           <h2 className="text-2xl m-2 md:text-3xl md:m-6">{message}</h2>
-          <button
+          <Button
             className="btn btn-neutral btn-primary text-md m-2 btn-answer w-11/12 md:h-14 md:text-xl"
             onClick={() => dispatch({ type: "reviewAnswers" })}
           >
             Review Answers
-          </button>
-          <button
+          </Button>
+          <Button
             className="btn btn-neutral btn-primary text-md m-2 btn-answer w-11/12 md:h-14 md:text-xl"
             onClick={() => dispatch({ type: "restart" })}
           >
             Restart Quiz
-          </button>
+          </Button>
         </div>
       </div>
     </div>

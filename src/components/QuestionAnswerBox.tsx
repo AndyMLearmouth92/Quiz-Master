@@ -4,7 +4,6 @@ import Question from "./Question";
 import ProgressBar from "./ProgressBar";
 import Timer from "./Timer";
 
-// The component which is delayed when the user is undertaking the quiz
 const QuestionAnswerBox: React.FC = () => {
   const { currentQuestion } = useQuiz();
   return (
@@ -13,10 +12,12 @@ const QuestionAnswerBox: React.FC = () => {
         <Question />
         <div className="justify-center">
           <div className="md:mb-6">
-            {currentQuestion &&
-              currentQuestion.answerOptions.map((answerOption, index) => (
-                <Options key={index} answerOption={answerOption} />
-              ))}
+            {currentQuestion?.answerOptions.map((answerOption) => (
+              <Options
+                key={answerOption.answerText}
+                answerOption={answerOption}
+              />
+            ))}
           </div>
           <ProgressBar />
           <Timer />
