@@ -41,6 +41,7 @@ Add tests to the application using React Testing Library and Jest.
 + First project using TypeScript.
 + First time using context and useReducer.
 + Keep track of the user's highscore using local storage.
++ Added a progress bar and a timer counting down how long the user has left.
 
 ## License
 
