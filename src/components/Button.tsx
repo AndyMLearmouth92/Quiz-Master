@@ -12,7 +12,12 @@ const Button: React.FC<ButtonProps> = ({
   style = {},
 }) => {
   return (
-    <button className={className} onClick={onClick} style={style}>
+    <button
+      className={className}
+      onClick={onClick}
+      style={style}
+      data-testid="buttonComponent"
+    >
       {children}
     </button>
   );
