@@ -2,7 +2,7 @@
 
 Quiz Master is an interactive quiz game which allows the user to select the number of questions they would like to undertake, answer the questions and once they are finished answering provides a total of the correct answers. The application also allows users to review their answers at the end while providing the correct answer for any questions that the user answered incorrectly.
 
-You can view Quiz Master <a href="https://quizmasterchallenge.netlify.app">here</a>.
+You can view Quiz Master <a href="https://quiz-master-production-f05a.up.railway.app">here</a>.
 
 <img width="1470" alt="image" src="https://github.com/AndyMLearmouth92/Quiz-Master/assets/108182837/51718ca9-f5d3-4fa8-a66a-792484f14a75">
 
