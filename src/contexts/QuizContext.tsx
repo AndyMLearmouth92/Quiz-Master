@@ -174,12 +174,12 @@ function QuizProvider({ children }: Props) {
       if (questionCount === 0) {
         return;
       }
-      fetch(`https://quiz-master-data.cyclic.cloud/questions/${questionCount}`)
+      fetch(`${import.meta.env.VITE_API_URL}/questions/${questionCount}`)
         .then((res) => res.json())
         .then((data) => dispatch({ type: "dataReceived", payload: data }))
         .catch(() => dispatch({ type: "dataFailed" }));
     },
-    [questionCount]
+    [questionCount],
   );
 
   return (
